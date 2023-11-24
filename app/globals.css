@@ -3,11 +3,23 @@
 @tailwind utilities;
 
 .tab {
-    @apply w-[254px] rounded-t-lg text-center overflow-hidden  py-3 bg-mainBg relative z-10 border-2 border-border;
+    @apply w-[254px] rounded-t-lg text-center overflow-hidden  py-3 bg-darkBg relative z-10 border-2 border-border;
 }
 .tab-active {
-    @apply shadow-active text-violet border-b-2 border-b-mainBg mx-0 overflow-visible z-20;
+    @apply shadow-active text-violet border-b-2 border-b-darkBg mx-0 overflow-visible z-20;
 }
 .card {
-    @apply rounded-lg bg-cardBg overflow-hidden flex items-center px-4 pt-[22px] pb-[18px];
+    @apply rounded-lg bg-lightBg overflow-hidden flex items-center px-4 pt-[22px] pb-[18px];
+}
+.label {
+    @apply text-xs text-textWhite font-medium leading-[18px] space-x-[10px] flex items-center;
+}
+.checkbox {
+    @apply outline-none w-5 h-5 bg-darkBg appearance-none border-2 border-border rounded  checked:border-violet accent-violet;
+}
+.btn {
+    @apply w-full rounded-lg border-2 bg-violet shadow-button border-buttonBorder py-3 mx-auto text-sm font-semibold leading-5 text-textWhite;
+}
+.dark-shadow {
+    @apply after:content-[''] after:w-full after:h-1/4 after:absolute after:bottom-14 after:left-0 after:bg-gradient-to-b from-shadowStart to-darkBg via-transparent;
 }
