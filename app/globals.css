@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 .tab {
-    @apply w-[254px] border-2 rounded-t-lg text-center border-border overflow-hidden  py-3 -mx-2 bg-mainBg relative z-10;
+    @apply w-[254px] rounded-t-lg text-center overflow-hidden  py-3 bg-mainBg relative z-10 border-2 border-border;
 }
 .tab-active {
     @apply shadow-active text-violet border-b-2 border-b-mainBg mx-0 overflow-visible z-20;
+}
+.card {
+    @apply rounded-lg bg-cardBg overflow-hidden flex items-center px-4 pt-[22px] pb-[18px];
 }

@@ -6,7 +6,7 @@ const TabsContainer = () => {
     const tab = useSearchParams().get('tab') || '1';
 
     return (
-        <div className='flex text-gray text-sm relative'>
+        <div className='flex text-gray text-sm relative -space-x-3'>
             <Link href={{ pathname: '/', query: { tab: '1' } }}>
                 <p className={`tab ${tab === '1' ? 'tab-active' : ''}`}>Иерархия</p>
             </Link>
