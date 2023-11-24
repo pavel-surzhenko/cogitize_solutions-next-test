@@ -2,5 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+.tab {
+    @apply w-[254px] border-2 rounded-t-lg text-center border-border overflow-hidden  py-3 -mx-2 bg-mainBg relative z-10;
+}
+.tab-active {
+    @apply shadow-active text-violet border-b-2 border-b-mainBg mx-0 overflow-visible z-20;
 }
