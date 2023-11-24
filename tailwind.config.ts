@@ -29,6 +29,9 @@ const config: Config = {
                 duties: '0px 4px 16px 0px rgba(0, 0, 0, 0.24)',
                 button: '0px 4px 40px 0px rgba(104, 102, 234, 0.24)',
             },
+            cursor: {
+                grab: "url('/grab.png'), grab",
+            },
         },
     },
     plugins: [],

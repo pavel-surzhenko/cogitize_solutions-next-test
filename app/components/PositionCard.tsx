@@ -1,10 +1,10 @@
-import GrapIcon from '../assets/GrapIcon';
+import GrabIcon from '../assets/GrabIcon';
 
 const PositionCard = () => {
     return (
         <li className='card'>
             <div className='cursor-grab pr-4'>
-                <GrapIcon />
+                <GrabIcon />
             </div>
             <div className='flex justify-between items-start flex-grow'>
                 <div className=''>
