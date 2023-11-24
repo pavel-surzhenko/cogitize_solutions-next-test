@@ -1,14 +1,19 @@
 'use client';
 import { useState } from 'react';
 import CheckIcon from '../assets/CheckIcon';
+import { checkboxProps, positionProps } from '../types';
 
-const PositionDetails = () => {
+const PositionDetails: React.FC<positionProps> = (props) => {
     const [checkboxes, setCheckboxes] = useState<checkboxProps>({
-        sell: false,
-        display: false,
-        watch: false,
+        trade: false,
+        price: false,
+        analytics: false,
         duel: false,
         claims: false,
+        buy: false,
+        workers: false,
+        position: false,
+        kicked: false,
     });
 
     const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,6 +31,7 @@ const PositionDetails = () => {
                     Название
                 </label>
                 <input
+                    value={props.name}
                     type='text'
                     placeholder='Введите имя...'
                     className='w-full rounded-lg border-2 border-border bg-transparent text-sm text-textWhite font-semibold leading-5 outline-none py-[14px] px-4'
@@ -45,39 +51,39 @@ const PositionDetails = () => {
                                 <label className='label'>
                                     <div className='relative'>
                                         <input
-                                            name='sell'
+                                            name='trade'
                                             type='checkbox'
                                             className='checkbox'
-                                            checked={checkboxes.sell}
+                                            checked={checkboxes.trade}
                                             onChange={(e) => handleCheckboxChange(e)}
                                         />
-                                        {checkboxes.sell && <CheckIcon />}
+                                        {checkboxes.trade && <CheckIcon />}
                                     </div>
                                     <span>Продавать продукти</span>
                                 </label>
                                 <label className='label'>
                                     <div className='relative'>
                                         <input
-                                            name='display'
+                                            name='price'
                                             type='checkbox'
                                             className='checkbox'
-                                            checked={checkboxes.display}
+                                            checked={checkboxes.price}
                                             onChange={(e) => handleCheckboxChange(e)}
                                         />
-                                        {checkboxes.display && <CheckIcon />}
+                                        {checkboxes.price && <CheckIcon />}
                                     </div>
                                     <span>Выставлять цены</span>
                                 </label>
                                 <label className='label'>
                                     <div className='relative'>
                                         <input
-                                            name='watch'
+                                            name='analytics'
                                             type='checkbox'
                                             className='checkbox'
-                                            checked={checkboxes.watch}
+                                            checked={checkboxes.analytics}
                                             onChange={(e) => handleCheckboxChange(e)}
                                         />
-                                        {checkboxes.watch && <CheckIcon />}
+                                        {checkboxes.analytics && <CheckIcon />}
                                     </div>
                                     <span>Смотреть аналитику</span>
                                 </label>
@@ -126,26 +132,26 @@ const PositionDetails = () => {
                                 <label className='label'>
                                     <div className='relative'>
                                         <input
-                                            name='sell'
+                                            name='buy'
                                             type='checkbox'
                                             className='checkbox'
-                                            checked={checkboxes.sell}
+                                            checked={checkboxes.buy}
                                             onChange={(e) => handleCheckboxChange(e)}
                                         />
-                                        {checkboxes.sell && <CheckIcon />}
+                                        {checkboxes.buy && <CheckIcon />}
                                     </div>
                                     <span>Закупать сырье</span>
                                 </label>
                                 <label className='label'>
                                     <div className='relative'>
                                         <input
-                                            name='display'
+                                            name='workers'
                                             type='checkbox'
                                             className='checkbox'
-                                            checked={checkboxes.display}
+                                            checked={checkboxes.workers}
                                             onChange={(e) => handleCheckboxChange(e)}
                                         />
-                                        {checkboxes.display && <CheckIcon />}
+                                        {checkboxes.workers && <CheckIcon />}
                                     </div>
                                     <span>Назначать рабочих</span>
                                 </label>
@@ -159,26 +165,26 @@ const PositionDetails = () => {
                                 <label className='label'>
                                     <div className='relative'>
                                         <input
-                                            name='duel'
+                                            name='position'
                                             type='checkbox'
                                             className='checkbox'
-                                            checked={checkboxes.duel}
+                                            checked={checkboxes.position}
                                             onChange={(e) => handleCheckboxChange(e)}
                                         />
-                                        {checkboxes.duel && <CheckIcon />}
+                                        {checkboxes.position && <CheckIcon />}
                                     </div>
                                     <span>Назначать должности</span>
                                 </label>
                                 <label className='label'>
                                     <div className='relative'>
                                         <input
-                                            name='duel'
+                                            name='kicked'
                                             type='checkbox'
                                             className='checkbox'
-                                            checked={checkboxes.duel}
+                                            checked={checkboxes.kicked}
                                             onChange={(e) => handleCheckboxChange(e)}
                                         />
-                                        {checkboxes.duel && <CheckIcon />}
+                                        {checkboxes.kicked && <CheckIcon />}
                                     </div>
                                     <span>Выгонять из банды</span>
                                 </label>
@@ -193,11 +199,3 @@ const PositionDetails = () => {
 };
 
 export default PositionDetails;
-
-type checkboxProps = {
-    sell: boolean;
-    display: boolean;
-    watch: boolean;
-    duel: boolean;
-    claims: boolean;
-};

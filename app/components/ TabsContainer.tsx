@@ -1,23 +1,27 @@
-'use client';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { TABS } from '../constants/tabs';
 
 const TabsContainer = () => {
-    const tab = useSearchParams().get('tab') || '1';
+    const tab = useSearchParams().get('tab') || TABS.HIERARCHY;
 
     return (
         <div className='flex text-gray text-sm relative -space-x-3'>
-            <Link href={{ pathname: '/', query: { tab: '1' } }}>
-                <p className={`tab ${tab === '1' ? 'tab-active' : ''}`}>Иерархия</p>
+            <Link href={{ pathname: '/', query: { tab: TABS.HIERARCHY } }}>
+                <p className={`tab ${tab === TABS.HIERARCHY ? 'tab-active' : ''}`}>Иерархия</p>
             </Link>
-            <Link href={{ pathname: '/', query: { tab: '2' } }}>
-                <p className={`tab ${tab === '2' ? 'tab-active' : ''}`}>Должности</p>
+            <Link href={{ pathname: '/', query: { tab: TABS.POSITIONS } }}>
+                <p className={`tab ${tab === TABS.POSITIONS ? 'tab-active' : ''}`}>Должности</p>
             </Link>
-            <Link href={{ pathname: '/', query: { tab: '3' } }}>
-                <p className={`tab ${tab === '3' ? 'tab-active' : ''}`}>Список Персонала</p>
+            <Link href={{ pathname: '/', query: { tab: TABS.PERSONAL } }}>
+                <p className={`tab ${tab === TABS.PERSONAL ? 'tab-active' : ''}`}>
+                    Список Персонала
+                </p>
             </Link>
-            <Link href={{ pathname: '/', query: { tab: '4' } }}>
-                <p className={`tab ${tab === '4' ? 'tab-active' : ''}`}>Наборы экипировки</p>
+            <Link href={{ pathname: '/', query: { tab: TABS.EQUIPMENT } }}>
+                <p className={`tab ${tab === TABS.EQUIPMENT ? 'tab-active' : ''}`}>
+                    Наборы экипировки
+                </p>
             </Link>
         </div>
     );
