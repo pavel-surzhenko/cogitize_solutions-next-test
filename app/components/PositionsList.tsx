@@ -10,7 +10,7 @@ const PositionsList: React.FC<{ positions: positionProps[] }> = ({ positions }) 
             <Droppable droppableId='list'>
                 {(prov) => (
                     <ul
-                        className='space-y-2 overflow-y-auto max-h-[500px]  2xl:max-h-[747px] dark-shadow'
+                        className='space-y-2 overflow-y-auto max-h-[492px]  2xl:max-h-[687px] dark-shadow'
                         ref={prov.innerRef}
                         {...prov.droppableProps}
                     >

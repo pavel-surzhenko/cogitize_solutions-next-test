@@ -1,18 +1,17 @@
 'use client';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { positionProps, reOrderPositionsProps } from '../types';
 import { TABS } from '../constants/tabs';
 import { PositionDetails, PositionsList, TabsContainer } from '.';
 import { DragDropContext, DropResult } from '@hello-pangea/dnd';
+import usePositions from '../ hooks/usePositions';
 
 const OrganizationalStructure = () => {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const tab = searchParams.get('tab');
-    const [positions, setPositions] = useState<positionProps[]>([]);
     const selectedPosition = searchParams.get('id');
+    const { positions, addPosition, updatePosition, reOrderPositions } = usePositions();
 
     const handleClick = async () => {
         const newPosition = {
@@ -30,29 +29,8 @@ const OrganizationalStructure = () => {
                 kicked: false,
             },
         };
-        setPositions((prev) => [newPosition, ...prev]);
-        const updatedPositions = [newPosition, ...positions];
-        localStorage.setItem('positions', JSON.stringify(updatedPositions));
+        addPosition(newPosition);
         router.push(`${pathname}?tab=${tab}&id=${newPosition.id}`);
-    };
-
-    const handleChange = (changedPosition: positionProps) => {
-        setPositions((prevPositions) => {
-            const filteredPositions = prevPositions.filter(
-                (position) => position.id !== changedPosition.id
-            );
-            const updatedPositions = [changedPosition, ...filteredPositions];
-            localStorage.setItem('positions', JSON.stringify(updatedPositions));
-
-            return updatedPositions;
-        });
-    };
-
-    const reOrderPositions: reOrderPositionsProps = (list, startIndex, endIndex) => {
-        const result = Array.from(list);
-        const [removed] = result.splice(startIndex, 1);
-        result.splice(endIndex, 0, removed);
-        return result;
     };
 
     const onDragEnd = (result: DropResult) => {
@@ -63,17 +41,8 @@ const OrganizationalStructure = () => {
             return;
         }
 
-        const updated = reOrderPositions(positions, result.source.index, result.destination.index);
-        setPositions(updated);
-        localStorage.setItem('positions', JSON.stringify(updated));
+        reOrderPositions(result.source.index, result.destination.index);
     };
-
-    useEffect(() => {
-        const savedPositions = localStorage.getItem('positions');
-        if (savedPositions) {
-            setPositions(JSON.parse(savedPositions));
-        }
-    }, []);
 
     return (
         <div className='max-w-[1034px] w-full bg-darkBg rounded-lg border-2 overflow-hidden shadow-main border-border px-[25px] pt-6 pb-4 relative '>
@@ -96,12 +65,12 @@ const OrganizationalStructure = () => {
                             <PositionDetails
                                 key={selectedPosition}
                                 position={positions.find((pos) => pos.id === selectedPosition)!}
-                                setPositions={handleChange}
+                                setPositions={updatePosition}
                             />
                         )}
                     </>
                 ) : (
-                    <div className='min-h-[564px] 2xl:min-h-[784px]'></div>
+                    <div className='min-h-[556px] 2xl:min-h-[751px]'></div>
                 )}
             </div>
         </div>
