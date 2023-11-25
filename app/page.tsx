@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import OrganizationalStructure from './components/OrganizationalStructure';
 
 export default function Home() {

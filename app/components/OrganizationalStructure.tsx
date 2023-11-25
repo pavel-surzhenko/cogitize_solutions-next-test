@@ -1,11 +1,9 @@
 'use client';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import TabsContainer from './ TabsContainer';
-import PositionDetails from './PositionDetails';
-import PositionsList from './PositionsList';
 import { useEffect, useState } from 'react';
 import { positionProps } from '../types';
 import { TABS } from '../constants/tabs';
+import { PositionDetails, PositionsList, TabsContainer } from '.';
 
 const OrganizationalStructure = () => {
     const router = useRouter();

@@ -1,5 +1,5 @@
+import { PositionCard } from '.';
 import { positionProps } from '../types';
-import PositionCard from './PositionCard';
 
 const PositionsList: React.FC<{ positions: positionProps[] }> = ({ positions }) => {
     return (
