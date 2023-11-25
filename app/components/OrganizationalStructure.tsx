@@ -1,9 +1,10 @@
 'use client';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { positionProps } from '../types';
+import { positionProps, reOrderPositionsProps } from '../types';
 import { TABS } from '../constants/tabs';
 import { PositionDetails, PositionsList, TabsContainer } from '.';
+import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 
 const OrganizationalStructure = () => {
     const router = useRouter();
@@ -47,6 +48,26 @@ const OrganizationalStructure = () => {
         });
     };
 
+    const reOrderPositions: reOrderPositionsProps = (list, startIndex, endIndex) => {
+        const result = Array.from(list);
+        const [removed] = result.splice(startIndex, 1);
+        result.splice(endIndex, 0, removed);
+        return result;
+    };
+
+    const onDragEnd = (result: DropResult) => {
+        if (!result.destination) {
+            return;
+        }
+        if (result.destination.index === result.source.index) {
+            return;
+        }
+
+        const updated = reOrderPositions(positions, result.source.index, result.destination.index);
+        setPositions(updated);
+        localStorage.setItem('positions', JSON.stringify(updated));
+    };
+
     useEffect(() => {
         const savedPositions = localStorage.getItem('positions');
         if (savedPositions) {
@@ -61,7 +82,9 @@ const OrganizationalStructure = () => {
                 {tab === TABS.POSITIONS ? (
                     <>
                         <div>
-                            <PositionsList positions={positions} />
+                            <DragDropContext onDragEnd={onDragEnd}>
+                                <PositionsList positions={positions} />
+                            </DragDropContext>
                             <button
                                 onClick={handleClick}
                                 className='btn mb-4'
@@ -78,7 +101,7 @@ const OrganizationalStructure = () => {
                         )}
                     </>
                 ) : (
-                    <div className='min-h-[556px] 2xl:min-h-[747px]'></div>
+                    <div className='min-h-[564px] 2xl:min-h-[784px]'></div>
                 )}
             </div>
         </div>
