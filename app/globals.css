@@ -12,7 +12,7 @@
     @apply rounded-lg bg-lightBg overflow-hidden flex items-center px-4 pt-[22px] pb-[18px];
 }
 .label {
-    @apply text-xs text-textWhite font-medium leading-[18px] space-x-[10px] flex items-center;
+    @apply text-xs text-textWhite font-medium leading-[18px] space-x-[10px] flex items-center cursor-pointer;
 }
 .checkbox {
     @apply outline-none w-5 h-5 bg-darkBg appearance-none border-2 border-border rounded  checked:border-violet accent-violet hover:border-violet transition-colors duration-300;

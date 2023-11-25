@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import CheckIcon from '../assets/CheckIcon';
 import { checkboxProps, positionDetails, positionProps } from '../types';
+import { DUTIES } from '../constants/duties';
 
 const PositionDetails: React.FC<positionDetails> = ({ position, setPositions }) => {
     const [checkboxes, setCheckboxes] = useState<checkboxProps>(position?.duties);
@@ -46,149 +47,100 @@ const PositionDetails: React.FC<positionDetails> = ({ position, setPositions }) 
                     <div className='basis-1/2 space-y-2'>
                         <div className=''>
                             <h3 className='text-xs font-medium leading-[18px] text-textGray mb-1'>
-                                Торговля
+                                {DUTIES.TRADE.label}
                             </h3>
                             <div className='space-y-2'>
-                                <label className='label'>
-                                    <div className='relative'>
-                                        <input
-                                            name='trade'
-                                            type='checkbox'
-                                            className='checkbox'
-                                            checked={checkboxes?.trade}
-                                            onChange={(e) => handleCheckboxChange(e)}
-                                        />
-                                        {checkboxes?.trade && <CheckIcon />}
-                                    </div>
-                                    <span>Продавать продукти</span>
-                                </label>
-                                <label className='label'>
-                                    <div className='relative'>
-                                        <input
-                                            name='price'
-                                            type='checkbox'
-                                            className='checkbox'
-                                            checked={checkboxes?.price}
-                                            onChange={(e) => handleCheckboxChange(e)}
-                                        />
-                                        {checkboxes?.price && <CheckIcon />}
-                                    </div>
-                                    <span>Выставлять цены</span>
-                                </label>
-                                <label className='label'>
-                                    <div className='relative'>
-                                        <input
-                                            name='analytics'
-                                            type='checkbox'
-                                            className='checkbox'
-                                            checked={checkboxes?.analytics}
-                                            onChange={(e) => handleCheckboxChange(e)}
-                                        />
-                                        {checkboxes?.analytics && <CheckIcon />}
-                                    </div>
-                                    <span>Смотреть аналитику</span>
-                                </label>
+                                {DUTIES.TRADE.checkBoxes.map((box) => (
+                                    <>
+                                        <label className='label'>
+                                            <div className='relative h-5 '>
+                                                <input
+                                                    name={box.key}
+                                                    type='checkbox'
+                                                    className='checkbox'
+                                                    checked={checkboxes[box.key]}
+                                                    onChange={(e) => handleCheckboxChange(e)}
+                                                />
+                                                {checkboxes[box.key] && <CheckIcon />}
+                                            </div>
+                                            <span>{box.label}</span>
+                                        </label>
+                                    </>
+                                ))}
                             </div>
                         </div>
                         <div className=''>
                             <h3 className='text-xs font-medium leading-[18px] text-textGray mb-1'>
-                                Разробки
+                                {DUTIES.DEVELOPMENT.label}
                             </h3>
                             <div className='space-y-2'>
-                                <label className='label'>
-                                    <div className='relative'>
-                                        <input
-                                            name='duel'
-                                            type='checkbox'
-                                            className='checkbox'
-                                            checked={checkboxes?.duel}
-                                            onChange={(e) => handleCheckboxChange(e)}
-                                        />
-                                        {checkboxes?.duel && <CheckIcon />}
-                                    </div>
-                                    <span>Дуель</span>
-                                </label>
-                                <label className='label'>
-                                    <div className='relative'>
-                                        <input
-                                            name='claims'
-                                            type='checkbox'
-                                            className='checkbox'
-                                            checked={checkboxes?.claims}
-                                            onChange={(e) => handleCheckboxChange(e)}
-                                        />
-                                        {checkboxes?.claims && <CheckIcon />}
-                                    </div>
-                                    <span>Выставлять претензии</span>
-                                </label>
+                                {DUTIES.DEVELOPMENT.checkBoxes.map((box) => (
+                                    <>
+                                        <label className='label'>
+                                            <div className='relative h-5'>
+                                                <input
+                                                    name={box.key}
+                                                    type='checkbox'
+                                                    className='checkbox'
+                                                    checked={checkboxes[box.key]}
+                                                    onChange={(e) => handleCheckboxChange(e)}
+                                                />
+                                                {checkboxes[box.key] && <CheckIcon />}
+                                            </div>
+                                            <span>{box.label}</span>
+                                        </label>
+                                    </>
+                                ))}
                             </div>
                         </div>
                     </div>
                     <div className='basis-1/2 space-y-2'>
                         <div className=''>
                             <h3 className='text-xs font-medium leading-[18px] text-textGray mb-1'>
-                                Производство
+                                {DUTIES.PRODUCTION.label}
                             </h3>
                             <div className='space-y-2'>
-                                <label className='label'>
-                                    <div className='relative'>
-                                        <input
-                                            name='buy'
-                                            type='checkbox'
-                                            className='checkbox'
-                                            checked={checkboxes?.buy}
-                                            onChange={(e) => handleCheckboxChange(e)}
-                                        />
-                                        {checkboxes?.buy && <CheckIcon />}
-                                    </div>
-                                    <span>Закупать сырье</span>
-                                </label>
-                                <label className='label'>
-                                    <div className='relative'>
-                                        <input
-                                            name='workers'
-                                            type='checkbox'
-                                            className='checkbox'
-                                            checked={checkboxes?.workers}
-                                            onChange={(e) => handleCheckboxChange(e)}
-                                        />
-                                        {checkboxes?.workers && <CheckIcon />}
-                                    </div>
-                                    <span>Назначать рабочих</span>
-                                </label>
+                                {DUTIES.PRODUCTION.checkBoxes.map((box) => (
+                                    <>
+                                        <label className='label'>
+                                            <div className='relative h-5'>
+                                                <input
+                                                    name={box.key}
+                                                    type='checkbox'
+                                                    className='checkbox'
+                                                    checked={checkboxes[box.key]}
+                                                    onChange={(e) => handleCheckboxChange(e)}
+                                                />
+                                                {checkboxes[box.key] && <CheckIcon />}
+                                            </div>
+                                            <span>{box.label}</span>
+                                        </label>
+                                    </>
+                                ))}
                             </div>
                         </div>
                         <div className=''>
                             <h3 className='text-xs font-medium leading-[18px] text-textGray mb-1'>
-                                Управление
+                                {DUTIES.MANAGEMENT.label}
                             </h3>
                             <div className='space-y-2'>
-                                <label className='label'>
-                                    <div className='relative'>
-                                        <input
-                                            name='position'
-                                            type='checkbox'
-                                            className='checkbox'
-                                            checked={checkboxes?.position}
-                                            onChange={(e) => handleCheckboxChange(e)}
-                                        />
-                                        {checkboxes?.position && <CheckIcon />}
-                                    </div>
-                                    <span>Назначать должности</span>
-                                </label>
-                                <label className='label'>
-                                    <div className='relative'>
-                                        <input
-                                            name='kicked'
-                                            type='checkbox'
-                                            className='checkbox'
-                                            checked={checkboxes?.kicked}
-                                            onChange={(e) => handleCheckboxChange(e)}
-                                        />
-                                        {checkboxes?.kicked && <CheckIcon />}
-                                    </div>
-                                    <span>Выгонять из банды</span>
-                                </label>
+                                {DUTIES.MANAGEMENT.checkBoxes.map((box) => (
+                                    <>
+                                        <label className='label'>
+                                            <div className='relative h-5'>
+                                                <input
+                                                    name={box.key}
+                                                    type='checkbox'
+                                                    className='checkbox'
+                                                    checked={checkboxes[box.key]}
+                                                    onChange={(e) => handleCheckboxChange(e)}
+                                                />
+                                                {checkboxes[box.key] && <CheckIcon />}
+                                            </div>
+                                            <span>{box.label}</span>
+                                        </label>
+                                    </>
+                                ))}
                             </div>
                         </div>
                     </div>
