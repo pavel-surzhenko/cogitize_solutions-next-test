@@ -19,10 +19,10 @@ const usePositions = () => {
 
     const updatePosition = (changedPosition: positionProps) => {
         setPositions((prevPositions) => {
-            const filteredPositions = prevPositions.filter(
-                (position) => position.id !== changedPosition.id
+            const updatedPositions = prevPositions.map((position) =>
+                position.id === changedPosition.id ? changedPosition : position
             );
-            const updatedPositions = [changedPosition, ...filteredPositions];
+
             localStorage.setItem('positions', JSON.stringify(updatedPositions));
             return updatedPositions;
         });
