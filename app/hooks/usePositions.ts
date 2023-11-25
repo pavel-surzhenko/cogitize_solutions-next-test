@@ -28,7 +28,7 @@ const usePositions = () => {
         });
     };
 
-    const reorderPositions_1 = (startIndex: number, endIndex: number) => {
+    const reorderPositions = (startIndex: number, endIndex: number) => {
         const result = Array.from(positions);
         const [removed] = result.splice(startIndex, 1);
         result.splice(endIndex, 0, removed);
@@ -36,7 +36,7 @@ const usePositions = () => {
         localStorage.setItem('positions', JSON.stringify(result));
     };
 
-    return { positions, addPosition, updatePosition, reorderPositions_1 };
+    return { positions, addPosition, updatePosition, reorderPositions };
 };
 
 export default usePositions;

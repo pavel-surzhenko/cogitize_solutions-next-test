@@ -11,7 +11,7 @@ const OrganizationalStructure = () => {
     const searchParams = useSearchParams();
     const tab = searchParams.get('tab');
     const selectedPosition = searchParams.get('id');
-    const { positions, addPosition, updatePosition, reorderPositions_1 } = usePositions();
+    const { positions, addPosition, updatePosition, reorderPositions } = usePositions();
 
     const handleClick = async () => {
         const newPosition = {
@@ -41,7 +41,7 @@ const OrganizationalStructure = () => {
             return;
         }
 
-        reorderPositions_1(result.source.index, result.destination.index);
+        reorderPositions(result.source.index, result.destination.index);
     };
 
     return (
