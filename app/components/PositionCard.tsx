@@ -23,7 +23,7 @@ const PositionCard: React.FC<positionProps> = ({ id, name, duties }) => {
 
                 <div className='flex justify-between items-start flex-grow'>
                     <div className=''>
-                        <h2 className='text-sm font-semibold text-textWhite leading-5'>{id}</h2>
+                        <h2 className='text-sm font-semibold text-textWhite leading-5'>{name}</h2>
                         <p className='text-xs font-semibold text-textGray leading-[19px]'>{`${
                             Object.values(duties).filter((value) => value === true).length
                         } заданий`}</p>

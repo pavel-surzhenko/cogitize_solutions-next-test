@@ -1,20 +1,11 @@
 'use client';
 import { useState } from 'react';
 import CheckIcon from '../assets/CheckIcon';
-import { checkboxProps, positionProps } from '../types';
+import { checkboxProps, positionDetails, positionProps } from '../types';
 
-const PositionDetails: React.FC<positionProps> = (props) => {
-    const [checkboxes, setCheckboxes] = useState<checkboxProps>({
-        trade: false,
-        price: false,
-        analytics: false,
-        duel: false,
-        claims: false,
-        buy: false,
-        workers: false,
-        position: false,
-        kicked: false,
-    });
+const PositionDetails: React.FC<positionDetails> = ({ position, setPositions }) => {
+    const [checkboxes, setCheckboxes] = useState<checkboxProps>(position?.duties);
+    const [name, setName] = useState<string>(position?.name || '');
 
     const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name } = event.target;
@@ -24,6 +15,15 @@ const PositionDetails: React.FC<positionProps> = (props) => {
         }));
     };
 
+    const handleSave = () => {
+        const updatedPosition: positionProps = {
+            ...position,
+            name: name,
+            duties: checkboxes,
+        };
+        setPositions(updatedPosition);
+    };
+
     return (
         <div className='rounded-lg bg-lightBg flex-grow p-4 flex flex-col'>
             <div className='bg-darkBg px-4 pt-4 pb-6 rounded-lg mb-[15px]'>
@@ -31,7 +31,8 @@ const PositionDetails: React.FC<positionProps> = (props) => {
                     Название
                 </label>
                 <input
-                    value={props.name}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     type='text'
                     placeholder='Введите имя...'
                     className='w-full rounded-lg border-2 border-border bg-transparent text-sm text-textWhite font-semibold leading-5 outline-none py-[14px] px-4'
@@ -54,10 +55,10 @@ const PositionDetails: React.FC<positionProps> = (props) => {
                                             name='trade'
                                             type='checkbox'
                                             className='checkbox'
-                                            checked={checkboxes.trade}
+                                            checked={checkboxes?.trade}
                                             onChange={(e) => handleCheckboxChange(e)}
                                         />
-                                        {checkboxes.trade && <CheckIcon />}
+                                        {checkboxes?.trade && <CheckIcon />}
                                     </div>
                                     <span>Продавать продукти</span>
                                 </label>
@@ -67,10 +68,10 @@ const PositionDetails: React.FC<positionProps> = (props) => {
                                             name='price'
                                             type='checkbox'
                                             className='checkbox'
-                                            checked={checkboxes.price}
+                                            checked={checkboxes?.price}
                                             onChange={(e) => handleCheckboxChange(e)}
                                         />
-                                        {checkboxes.price && <CheckIcon />}
+                                        {checkboxes?.price && <CheckIcon />}
                                     </div>
                                     <span>Выставлять цены</span>
                                 </label>
@@ -80,10 +81,10 @@ const PositionDetails: React.FC<positionProps> = (props) => {
                                             name='analytics'
                                             type='checkbox'
                                             className='checkbox'
-                                            checked={checkboxes.analytics}
+                                            checked={checkboxes?.analytics}
                                             onChange={(e) => handleCheckboxChange(e)}
                                         />
-                                        {checkboxes.analytics && <CheckIcon />}
+                                        {checkboxes?.analytics && <CheckIcon />}
                                     </div>
                                     <span>Смотреть аналитику</span>
                                 </label>
@@ -100,10 +101,10 @@ const PositionDetails: React.FC<positionProps> = (props) => {
                                             name='duel'
                                             type='checkbox'
                                             className='checkbox'
-                                            checked={checkboxes.duel}
+                                            checked={checkboxes?.duel}
                                             onChange={(e) => handleCheckboxChange(e)}
                                         />
-                                        {checkboxes.duel && <CheckIcon />}
+                                        {checkboxes?.duel && <CheckIcon />}
                                     </div>
                                     <span>Дуель</span>
                                 </label>
@@ -113,10 +114,10 @@ const PositionDetails: React.FC<positionProps> = (props) => {
                                             name='claims'
                                             type='checkbox'
                                             className='checkbox'
-                                            checked={checkboxes.claims}
+                                            checked={checkboxes?.claims}
                                             onChange={(e) => handleCheckboxChange(e)}
                                         />
-                                        {checkboxes.claims && <CheckIcon />}
+                                        {checkboxes?.claims && <CheckIcon />}
                                     </div>
                                     <span>Выставлять претензии</span>
                                 </label>
@@ -135,10 +136,10 @@ const PositionDetails: React.FC<positionProps> = (props) => {
                                             name='buy'
                                             type='checkbox'
                                             className='checkbox'
-                                            checked={checkboxes.buy}
+                                            checked={checkboxes?.buy}
                                             onChange={(e) => handleCheckboxChange(e)}
                                         />
-                                        {checkboxes.buy && <CheckIcon />}
+                                        {checkboxes?.buy && <CheckIcon />}
                                     </div>
                                     <span>Закупать сырье</span>
                                 </label>
@@ -148,10 +149,10 @@ const PositionDetails: React.FC<positionProps> = (props) => {
                                             name='workers'
                                             type='checkbox'
                                             className='checkbox'
-                                            checked={checkboxes.workers}
+                                            checked={checkboxes?.workers}
                                             onChange={(e) => handleCheckboxChange(e)}
                                         />
-                                        {checkboxes.workers && <CheckIcon />}
+                                        {checkboxes?.workers && <CheckIcon />}
                                     </div>
                                     <span>Назначать рабочих</span>
                                 </label>
@@ -168,10 +169,10 @@ const PositionDetails: React.FC<positionProps> = (props) => {
                                             name='position'
                                             type='checkbox'
                                             className='checkbox'
-                                            checked={checkboxes.position}
+                                            checked={checkboxes?.position}
                                             onChange={(e) => handleCheckboxChange(e)}
                                         />
-                                        {checkboxes.position && <CheckIcon />}
+                                        {checkboxes?.position && <CheckIcon />}
                                     </div>
                                     <span>Назначать должности</span>
                                 </label>
@@ -181,10 +182,10 @@ const PositionDetails: React.FC<positionProps> = (props) => {
                                             name='kicked'
                                             type='checkbox'
                                             className='checkbox'
-                                            checked={checkboxes.kicked}
+                                            checked={checkboxes?.kicked}
                                             onChange={(e) => handleCheckboxChange(e)}
                                         />
-                                        {checkboxes.kicked && <CheckIcon />}
+                                        {checkboxes?.kicked && <CheckIcon />}
                                     </div>
                                     <span>Выгонять из банды</span>
                                 </label>
@@ -193,7 +194,12 @@ const PositionDetails: React.FC<positionProps> = (props) => {
                     </div>
                 </form>
             </div>
-            <button className='btn mt-2'>Сохранить</button>
+            <button
+                className='btn mt-2'
+                onClick={handleSave}
+            >
+                Сохранить
+            </button>
         </div>
     );
 };
