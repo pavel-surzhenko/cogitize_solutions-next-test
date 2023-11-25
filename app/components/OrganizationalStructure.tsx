@@ -3,7 +3,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { TABS } from '../constants/tabs';
 import { PositionDetails, PositionsList, TabsContainer } from '.';
 import { DragDropContext, DropResult } from '@hello-pangea/dnd';
-import usePositions from '../ hooks/usePositions';
+import usePositions from '../hooks/usePositions';
 
 const OrganizationalStructure = () => {
     const router = useRouter();
@@ -11,7 +11,7 @@ const OrganizationalStructure = () => {
     const searchParams = useSearchParams();
     const tab = searchParams.get('tab');
     const selectedPosition = searchParams.get('id');
-    const { positions, addPosition, updatePosition, reOrderPositions } = usePositions();
+    const { positions, addPosition, updatePosition, reorderPositions_1 } = usePositions();
 
     const handleClick = async () => {
         const newPosition = {
@@ -41,7 +41,7 @@ const OrganizationalStructure = () => {
             return;
         }
 
-        reOrderPositions(result.source.index, result.destination.index);
+        reorderPositions_1(result.source.index, result.destination.index);
     };
 
     return (
