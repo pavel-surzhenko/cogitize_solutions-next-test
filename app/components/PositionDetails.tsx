@@ -35,7 +35,7 @@ const PositionDetails: React.FC<positionDetails> = ({ position, setPositions }) 
                     onChange={(e) => setName(e.target.value)}
                     type='text'
                     placeholder='Введите имя...'
-                    className='w-full rounded-lg border-2 border-border bg-transparent text-sm text-textWhite font-semibold leading-5 outline-none py-[14px] px-4'
+                    className='w-full rounded-lg border-2 border-border bg-transparent text-sm text-textWhite font-semibold leading-5 outline-none py-[14px] px-4 focus:border-white/50'
                 />
             </div>
             <div className='rounded-lg bg-darkBg overflow-hidden flex flex-col flex-grow'>

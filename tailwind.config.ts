@@ -25,9 +25,10 @@ const config: Config = {
             },
             boxShadow: {
                 main: '0px 4px 4px 0px rgba(0,0,0,0.25)',
-                active: '0px 4px 8px 0px rgba(103,100,241,0.16) inset',
+                tab: '0px 4px 8px 0px rgba(103,100,241,0.16) inset',
                 duties: '0px 4px 16px 0px rgba(0, 0, 0, 0.24)',
                 button: '0px 4px 40px 0px rgba(104, 102, 234, 0.24)',
+                card: '4px 8px 40px 0px rgba(0,0,0, 0.40)',
             },
             cursor: {
                 grab: "url('/grab.png'), grab",

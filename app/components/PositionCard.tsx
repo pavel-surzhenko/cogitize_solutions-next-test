@@ -25,7 +25,7 @@ const PositionCard: React.FC<positionProps & provider> = ({ id, name, duties, in
                 >
                     <Link
                         href={{ pathname: '/', query: { tab, id } }}
-                        className='card'
+                        className='card hover:shadow-card'
                     >
                         <div className='cursor-grab pr-4'>
                             <GrabIcon />
